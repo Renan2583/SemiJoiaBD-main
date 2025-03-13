@@ -1,0 +1,60 @@
+<!-- views/cadastro.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script src="/js/cadastrar.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: rgb(102, 101, 101);">
+    <div class="form-container" style="margin-top: 20px;">
+        <form method="post" style="display: flex; justify-content: center; margin-top: 150px; flex-direction: column; gap: 5px; width: 350px; margin: 0 auto;" enctype="multipart/form-data">
+
+            
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required class="form-control">
+            
+            <label for="fornecedor">Fornecedor</label>
+            <select id="fornecedor" name="fornecedor" required class="form-select">
+                <option value="puro brilho">Puro Brilho</option>
+                <option value="redentora">Redentora</option>
+                <option value="jhf">Jhf</option>
+                <option value = "evidencia">Evidencia</option>
+                <option value="silvercrown">SilverCrown</option>
+                <option value="pontok">Ponto K</option>
+                <option value="belanel">BelaNel</option>
+            </select>
+            
+            <label for="precocompra">Preço Pago</label>
+            <input class="preco form-control" type="number" id="precocompra" name="precocompra" required >
+            
+            <label for="precovenda">Preço De Venda</label>
+            <input class="preco form-control" type="number" id="precovenda" name="precovenda" required>
+            
+            <label for="quant">Quantidade</label>
+            <input class="quant form-control" type="number" id="quant" name="quant" value="1" required>
+
+            <label for="vendedor">Vendedor</label>
+            <select id="vendedor" name="vendedor" required class="form-select">
+                <option value="indefinido">Indefinido</option>
+                <option value="celeste">Celeste</option>
+                <option value="glorinha">Glorinha</option>
+                <option value="debora">Debora</option>
+            </select>
+
+            <input type="file" name="imagem" id="imagem" required><!-- Adiciona imagem -->
+
+
+
+           
+
+            
+
+            <button type="button" class="btn btn-primary"id="btnCadastrar">Cadastrar</button>
+            <button type="button" class="btn btn-primary"id="btnExibir" onclick="window.location.href='/exibir'">Exibir</button>
+        </form>
+    </div>
+</body>
+</html>
