@@ -2,8 +2,6 @@ const inicioModel = require('../models/InicioModel');
 const multer = require('multer');
 const path = require('path');
 
-
-
 class InicioController {
     async inicioView(req, res) {
         let listarTudo = new inicioModel();
@@ -29,10 +27,7 @@ class InicioController {
             cadastrarPeca.precocompra = req.body.precocompra;
             cadastrarPeca.precovenda = req.body.precovenda;
             cadastrarPeca.quant = req.body.quant;
-            cadastrarPeca.vendedor = req.body.vendedor;
             
-
-
             let resultado = await cadastrarPeca.cadastrar();
 
             if (resultado) {
@@ -43,26 +38,24 @@ class InicioController {
     
         }
 
-        
-
     }
-    async listarPorVendedor(req, res) {
-        const vendedor = req.params.vendedor;
+    async atualizarVendedor(req, res) {
+        const { id, vendedor } = req.body;
+    
+        if (!id || !vendedor) {
+            return res.status(400).json({ success: false, message: "ID e Vendedor são obrigatórios." });
+        }
+    
+        const resultado = await new inicioModel().atualizarVendedor(id, vendedor);
         
-        try {
-            const model = new inicioModel();
-            const pecas = await model.listarPorVendedor(vendedor);
-            
-            console.log('Peças encontradas:', pecas); // Verifique aqui
-            
-            res.render('vendedores', { lista: pecas });
-        } catch (error) {
-            console.error("Erro ao buscar peças por vendedor:", error);
-            res.status(500).json({ error: "Erro ao buscar peças" });
+        if (resultado.success) {
+            res.json({ success: true });
+        } else {
+            res.status(500).json({ success: false, message: "Erro ao atualizar o vendedor." });
         }
     }
-    
-    
+
+
 }
 
   

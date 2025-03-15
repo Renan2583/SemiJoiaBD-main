@@ -33,7 +33,17 @@
                     <td>R$ <%= lista[i].precocompra %></td>
                     <td>R$ <%= lista[i].precovenda %></td>
                     <td><%= lista[i].quant %></td>
-                    <td><%= lista[i].vendedor %></td>
+                    <td>
+                        <select class="form-select" onchange="atualizarVendedor(<%= lista[i].id %>, this.value)">
+                            <option value="indefinido" <%= lista[i].vendedor === 'indefinido' ? 'selected' : '' %>>Indefinido</option>
+                            <option value="celeste" <%= lista[i].vendedor === 'celeste' ? 'selected' : '' %>>Celeste</option>
+                            <option value="glorinha" <%= lista[i].vendedor === 'glorinha' ? 'selected' : '' %>>Glorinha</option>
+                            <option value="debora" <%= lista[i].vendedor === 'debora' ? 'selected' : '' %>>Debora</option>
+                        </select>
+                    </td>
+                    
+                    
+                    
                 </tr>
                 
            <% } %>

@@ -49,3 +49,23 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 });
+
+function atualizarVendedor(id, vendedor) {
+  fetch('/atualizar-vendedor', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, vendedor })
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          alert('Vendedor atualizado com sucesso!');
+      } else {
+          alert('Erro ao atualizar o vendedor.');
+      }
+  })
+  .catch(error => console.error('Erro:', error));
+}
+
